@@ -10,9 +10,9 @@ return {
 		vim.keymap.set('n', '<leader>a', mark.add_file)
 		vim.keymap.set('n', '<leader>hp', ui.toggle_quick_menu)
 
-		vim.keymap.set('n', '<leader>j', function() ui.nav_file(1) end)
-		vim.keymap.set('n', '<leader>k', function() ui.nav_file(2) end)
-		vim.keymap.set('n', '<leader>l', function() ui.nav_file(3) end)
-		vim.keymap.set('n', '<leader>;', function() ui.nav_file(4) end)
+		vim.keymap.set('n', '<leader>a', function() ui.nav_file(1) end)
+		vim.keymap.set('n', '<leader>s', function() ui.nav_file(2) end)
+		vim.keymap.set('n', '<leader>d', function() ui.nav_file(3) end)
+		vim.keymap.set('n', '<leader>f', function() ui.nav_file(4) end)
 	end
 }
