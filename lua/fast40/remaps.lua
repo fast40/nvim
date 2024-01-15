@@ -5,4 +5,6 @@ vim.keymap.set('i', 'jk', '<Esc>')
 
 vim.keymap.set('n', '<leader>rw', vim.cmd.Ex)
 
+vim.o.mouse = ''
+
 -- vim.keymap.set('n', 'vie', 'ggVG')
