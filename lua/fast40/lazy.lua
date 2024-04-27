@@ -13,5 +13,4 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-
 require('lazy').setup('fast40.plugins')
