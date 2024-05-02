@@ -13,12 +13,15 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.expandtab = true
 vim.opt.tabstop = 8
+
 vim.opt.list = false  -- can be toggled later
 vim.opt.listchars = {
         space = '·',
         tab = '→ ',
         eol = '↲'
 }
+
+
 
 -- vim.opt.guicursor = ''  -- make the cursor always a block
 
