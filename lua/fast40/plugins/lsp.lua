@@ -23,7 +23,12 @@ return {
                 }) -- this allows neovim's lspconfig to work with mason as normal
                 require('mason-lspconfig').setup_handlers { -- the first entry (without a key) will be the default handler and will be called for each installed server that doesn't have a dedicated handler.
                         function(server_name) -- default handler (optional)
-                                require('lspconfig')[server_name].setup {}
+                                require('lspconfig')[server_name].setup({
+                                        on_attach = function() -- "takes in client but we're not going to use it right now"
+                                                vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = 0 }) -- 0 is current buffer (so it only sets the keymap for the current buffer
+                                                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = 0 })
+                                        end,
+                                })
                         end,
                         ['html'] = function()
                                 -- enable (broadcasting) snippet capability for completion
@@ -34,6 +39,20 @@ return {
                                         capabilities = capabilities,
                                 })
                         end,
+                        ['pyright'] = function()
+                                require('lspconfig').pyright.setup({
+                                        settings = {
+                                                python = {
+                                                        analysis = {
+                                                                extraPaths = {vim.fn.getcwd()}
+                                                        }
+                                                }
+                                        }
+                                })
+
+                                vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = 0 })
+                                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = 0 })
+                        end
                 }
 
                 -- luasnip stuff

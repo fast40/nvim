@@ -1,32 +1,24 @@
 vim.g.mapleader = ' '
 
-vim.keymap.set('i', 'kj', '<Esc>')  -- rhs can either be a string or a lua function
+vim.keymap.set('i', 'kj', '<Esc>')
 vim.keymap.set('i', 'jk', '<Esc>')
-
+vim.keymap.set('n', 'vie', 'ggVG')
+vim.keymap.set('n', 'yie', 'ggVGy')
+vim.keymap.set('n', 'die', 'ggVGd')
 vim.keymap.set('n', '<leader>rw', vim.cmd.Ex)
 
 vim.opt.mouse = ''
-vim.opt.number = true  -- somehow this also works with vim.wo (w for window)
-vim.opt.relativenumber = true  -- this too
+vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.expandtab = true
 vim.opt.tabstop = 8
-
-vim.opt.list = false  -- can be toggled later
-vim.opt.listchars = {
-        space = '·',
-        tab = '→ ',
-        eol = '↲'
-}
-
-
-
--- vim.opt.guicursor = ''  -- make the cursor always a block
-
-vim.keymap.set('n', 'vie', 'ggVG')
-vim.keymap.set('n', 'die', 'ggVGd')
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.list = false  -- this is toggled with a keymap later
+vim.opt.listchars = { space = '·', tab = '→ ', eol = '↲' }
 
 function insert_date()
         -- vim.fn.setline('.', vim.fn.getline('.') .. 'test')
@@ -51,11 +43,3 @@ end
 vim.keymap.set('n', '<leader>j', insert_date)
 vim.keymap.set('n', '<leader>w', toggle_whitespace_rendering)
 vim.keymap.set('n', '<leader>n', toggle_line_numbers)
-
-function print_buffers()
-        print('buffers:')
-        print('buffers:')
-        for key, value in pairs(vim.lsp.buf_get_clients()) do
-                print(key, value)
-        end
-end

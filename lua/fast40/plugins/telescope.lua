@@ -7,26 +7,39 @@ return {
 	config = function()
 		require('telescope').setup {
 			defaults = {
-				file_ignore_patterns = {'venv'}
+				file_ignore_patterns = {'venv'},
+                                mappings = {  -- add the following mappings under the find_files picker
+                                        i = {  -- specify the mode for which the mappings apply
+                                                ["kl"] = "close",
+                                                ["lk"] = "close",
+                                        },
+                                        n = {
+                                                ["kl"] = "close",
+                                                ["lk"] = "close",
+                                        },
+                                },
 			},
-			pickers = {  -- add customization for specific pickers (telescope's name for main ui windows I think)
-				find_files = {  -- customize the find_files picker (there are other pickers; see :h telescope.builtin)
-					mappings = {  -- add the following mappings under the find_files picker
-						i = {  -- specify the mode for which the mappings apply
-							["kl"] = "close",
-							["lk"] = "close",
-						},
-						n = {
-							["kl"] = "close",
-							["lk"] = "close",
-						},
-					}
-				}
-			}
+		-- 	pickers = {  -- add customization for specific pickers (telescope's name for main ui windows I think)
+		-- 		find_files = {  -- customize the find_files picker (there are other pickers; see :h telescope.builtin)
+		-- 			mappings = {  -- add the following mappings under the find_files picker
+		-- 				i = {  -- specify the mode for which the mappings apply
+		-- 					["kl"] = "close",
+		-- 					["lk"] = "close",
+		-- 				},
+		-- 				n = {
+		-- 					["kl"] = "close",
+		-- 					["lk"] = "close",
+		-- 				},
+		-- 			}
+		-- 		}
+		-- 	}
 		}
 
 		local builtin = require('telescope.builtin')
 
 		vim.keymap.set('n', '<leader>ts', builtin.find_files, {})
+                vim.keymap.set('n', '<leader>td', builtin.treesitter, {})
+                vim.keymap.set('n', '<leader>ta', builtin.live_grep, {})
+                vim.keymap.set('n', '<leader>tj', builtin.grep_string, {})
 	end
 }
