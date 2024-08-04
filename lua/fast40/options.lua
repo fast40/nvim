@@ -12,6 +12,13 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('v', '<leader>lk', '<Esc>')
 vim.keymap.set('v', '<leader>kl', '<Esc>')
 
+
+vim.api.nvim_create_user_command('Sw', 'w !sudo tee > /dev/null %', {})
+vim.api.nvim_create_user_command('Swq', function()
+        vim.cmd('w !sudo tee > /dev/null %')
+        vim.cmd('q!')
+end, {})
+
 vim.opt.mouse = ''
 vim.opt.number = true
 vim.opt.relativenumber = true
