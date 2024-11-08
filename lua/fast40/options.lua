@@ -30,7 +30,8 @@ vim.opt.tabstop = 8
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.list = false  -- this is toggled with a keymap later
-vim.opt.listchars = { space = '·', tab = '→ ', eol = '↲' }
+vim.opt.listchars = { space = '·', tab = '→ ', eol = '↲' } -- called "listchars" because it is used when you enable list mode. (:set list)
+vim.opt.fillchars = { eob = ' ' } -- eob is for "end of buffer"
 --
 -- function insert_date()
 --         -- vim.fn.setline('.', vim.fn.getline('.') .. 'test')
@@ -38,7 +39,7 @@ vim.opt.listchars = { space = '·', tab = '→ ', eol = '↲' }
 -- end
 
 function toggle_whitespace_rendering()
-        vim.opt.list = not vim.opt.list:get()
+        vim.opt.list = not vim.opt.list:get() -- enables or disables so-called "list mode"
 end
 
 function toggle_line_numbers()
