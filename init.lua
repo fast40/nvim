@@ -343,11 +343,3 @@ function LLM()
 end
 
 vim.keymap.set('v', '<leader>gl', LLM)
--- vim.keymap.set('v', '<leader>gl', "<Cmd>lua LLM()<CR>", { silent = true })
-
--- vim.keymap.set('v', '<leader>gl', function()
---     vim.cmd('lua LLM()')
--- end, { silent = true })
-
-
-require('llm')
